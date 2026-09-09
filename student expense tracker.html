@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Expense Tracker — Project Documentation</title>
+<style>
+:root{
+ --bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;
+ --primary:#4f46e5;--primary2:#7c3aed;--border:#e5e7eb;
+ --dark:#111827;--green:#16a34a;--orange:#ea580c;--red:#dc2626;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:270px;background:var(--dark);color:#fff;padding:25px 18px;overflow:auto}
+.brand{font-size:22px;font-weight:800;padding:5px 12px 25px}.brand span{color:#818cf8}
+.sidebar h4{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin:18px 12px 8px}
+.nav a{display:block;color:#cbd5e1;text-decoration:none;padding:9px 12px;border-radius:8px;font-size:14px;margin:2px 0}
+.nav a:hover{background:#312e81;color:#fff}
+.main{margin-left:270px;padding:40px;max-width:1500px}
+.hero{background:linear-gradient(135deg,#312e81,#6d28d9);color:#fff;border-radius:22px;padding:45px;margin-bottom:25px;box-shadow:0 18px 45px rgba(49,46,129,.2)}
+.hero .tag{display:inline-block;background:rgba(255,255,255,.15);padding:5px 10px;border-radius:99px;font-size:12px;margin-bottom:15px}
+.hero h1{font-size:42px;line-height:1.15;margin-bottom:12px}.hero p{max-width:850px;color:#e0e7ff}
+section{scroll-margin-top:25px;margin-bottom:25px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:28px;box-shadow:0 8px 25px rgba(15,23,42,.05)}
+h2{font-size:25px;margin-bottom:15px}h3{font-size:18px;margin:20px 0 8px}
+p{margin-bottom:12px}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{padding:20px;border:1px solid var(--border);border-radius:13px;background:#fafbff}
+.feature .emoji{font-size:27px;margin-bottom:8px}.feature h3{margin:0 0 5px}
+.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start}
+.num{width:38px;height:38px;border-radius:11px;background:#eef2ff;color:#4338ca;display:grid;place-items:center;font-weight:800}
+.tech{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.techbox{border:1px solid var(--border);border-radius:13px;padding:18px}
+.badge{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:99px;padding:4px 9px;font-size:12px;font-weight:700}
+.code{background:#111827;color:#e5e7eb;border-radius:12px;padding:18px;overflow:auto;font-family:Consolas,monospace;font-size:13px;white-space:pre-wrap}
+.diagram{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0}
+.box{background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;padding:15px;border-radius:12px;text-align:center;font-weight:700}
+.arrow{font-size:24px;color:#94a3b8}
+table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--border);vertical-align:top}th{background:#f8fafc;font-size:13px}
+.callout{border-left:4px solid var(--primary);background:#f5f3ff;padding:15px 17px;border-radius:0 10px 10px 0;margin:15px 0}
+.warn{border-left-color:var(--orange);background:#fff7ed}.good{border-left-color:var(--green);background:#f0fdf4}
+.faq{display:grid;gap:10px}.faq details{background:#fafafa;border:1px solid var(--border);padding:13px 15px;border-radius:10px}.faq summary{font-weight:700;cursor:pointer}
+ul,ol{padding-left:22px;margin:8px 0 14px}li{margin:5px 0}
+.footer{text-align:center;color:var(--muted);padding:20px}
+@media(max-width:900px){.sidebar{position:static;width:100%;height:auto}.nav{display:flex;flex-wrap:wrap}.main{margin-left:0;padding:20px}.grid,.tech{grid-template-columns:1fr 1fr}.hero h1{font-size:32px}}
+@media(max-width:600px){.grid,.tech{grid-template-columns:1fr}.main{padding:12px}.hero{padding:28px}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+ <div class="brand">Student<span>Spend</span></div>
+ <h4>Project Guide</h4>
+ <nav class="nav">
+  <a href="#overview">Overview</a><a href="#purpose">Purpose</a><a href="#features">Features</a>
+  <a href="#technology">Technologies</a><a href="#structure">Structure</a><a href="#working">How It Works</a>
+  <a href="#storage">Data Storage</a><a href="#calculations">Calculations</a><a href="#charts">Charts</a>
+  <a href="#workflow">Complete Workflow</a><a href="#advantages">Advantages</a><a href="#limitations">Limitations</a>
+  <a href="#future">Future Scope</a><a href="#viva">Viva Questions</a>
+ </nav>
+ <h4>Quick Concept</h4>
+ <p style="padding:0 12px;color:#94a3b8;font-size:12px">HTML = structure<br>CSS = design<br>JavaScript = logic<br>localStorage = browser data</p>
+</aside>
+
+<main class="main">
+
+<header class="hero" id="overview">
+ <span class="tag">PROJECT DOCUMENTATION</span>
+ <h1>Student Expense Tracker</h1>
+ <p>A complete explanation of what the project is, why it is useful, the technologies used to build it, how its features work, how data is stored, and how the complete system operates.</p>
+</header>
+
+<section id="purpose">
+<div class="card">
+ <h2>1. What is a Student Expense Tracker?</h2>
+ <p>The <b>Student Expense Tracker</b> is a web-based personal finance management application designed specifically for students. It allows a student to record income and expenses, organize spending into categories, set a monthly budget, monitor the remaining balance and understand spending patterns.</p>
+ <p>Instead of writing expenses in a notebook or trying to remember them, the user can enter each transaction into one digital dashboard. JavaScript processes the entered information and immediately updates the balance, monthly spending, budget status, charts and reports.</p>
+ <div class="callout good"><b>In simple words:</b> It is a digital notebook + calculator + budget planner + spending report in one webpage.</div>
+</div>
+</section>
+
+<section id="features">
+<div class="card">
+ <h2>2. Main Features</h2>
+ <div class="grid">
+  <div class="feature"><div class="emoji">💰</div><h3>Balance Tracking</h3><p>Calculates total income minus total expenses.</p></div>
+  <div class="feature"><div class="emoji">💳</div><h3>Transactions</h3><p>Add, search, filter and delete income or expense records.</p></div>
+  <div class="feature"><div class="emoji">🎯</div><h3>Budget Planner</h3><p>Set a monthly spending limit and see how much remains.</p></div>
+  <div class="feature"><div class="emoji">📊</div><h3>Dashboard</h3><p>Shows important financial information at a glance.</p></div>
+  <div class="feature"><div class="emoji">🥧</div><h3>Category Analysis</h3><p>Shows which categories consume the most money.</p></div>
+  <div class="feature"><div class="emoji">📈</div><h3>Reports</h3><p>Provides spending trends and simple financial insights.</p></div>
+  <div class="feature"><div class="emoji">🔎</div><h3>Search & Filter</h3><p>Quickly locate transactions by description, category or type.</p></div>
+  <div class="feature"><div class="emoji">📥</div><h3>CSV Export</h3><p>Downloads transaction data as a spreadsheet-compatible CSV file.</p></div>
+  <div class="feature"><div class="emoji">💾</div><h3>Data Persistence</h3><p>Uses browser localStorage so data remains after refreshing.</p></div>
+ </div>
+</div>
+</section>
+
+<section id="technology">
+<div class="card">
+ <h2>3. Technologies Used</h2>
+ <div class="tech">
+  <div class="techbox"><span class="badge">HTML5</span><h3>Structure</h3><p>Creates headings, buttons, forms, tables, navigation, sections and other webpage elements.</p></div>
+  <div class="techbox"><span class="badge">CSS3</span><h3>Design</h3><p>Controls colors, spacing, cards, layout, responsive design, buttons, charts area and overall appearance.</p></div>
+  <div class="techbox"><span class="badge">JavaScript</span><h3>Logic</h3><p>Handles transactions, calculations, filtering, budget checking, charts, storage and user interaction.</p></div>
+ </div>
+ <h3>Additional browser technologies</h3>
+ <ul>
+  <li><b>DOM:</b> JavaScript uses the Document Object Model to change webpage content dynamically.</li>
+  <li><b>localStorage:</b> Stores application data directly in the user's browser.</li>
+  <li><b>Canvas API:</b> Used to draw the spending charts.</li>
+  <li><b>Blob + Download API:</b> Used to generate and download the CSV file.</li>
+ </ul>
+</div>
+</section>
+
+<section id="structure">
+<div class="card">
+ <h2>4. Project Structure</h2>
+ <p>The project is intentionally simple: the complete application can run from a single HTML file.</p>
+ <div class="code">&lt;student_expense_tracker.html&gt;
+│
+├── &lt;head&gt;
+│   ├── Page title
+│   └── CSS styles
+│
+├── &lt;body&gt;
+│   ├── Sidebar navigation
+│   ├── Dashboard
+│   ├── Transactions page
+│   ├── Budget page
+│   ├── Reports page
+│   ├── Settings page
+│   └── Add Transaction modal
+│
+└── &lt;script&gt;
+    ├── Transaction data
+    ├── Add/Delete functions
+    ├── Calculations
+    ├── Budget logic
+    ├── Search & filtering
+    ├── localStorage
+    ├── Charts
+    └── CSV export</div>
+ <div class="callout"><b>Important:</b> This is a frontend project. The current version does not require a separate server, database or backend because the records are stored in the browser's localStorage.</div>
+</div>
+</section>
+
+<section id="working">
+<div class="card">
+ <h2>5. How the Website Works</h2>
+ <p>The application follows a simple flow from user input to data processing and display.</p>
+ <div class="diagram">
+  <div class="box">User enters transaction</div><div class="arrow">→</div>
+  <div class="box">JavaScript validates & processes</div><div class="arrow">→</div>
+  <div class="box">Data stored in localStorage</div><div class="arrow">→</div>
+  <div class="box">Dashboard recalculates</div><div class="arrow">→</div>
+  <div class="box">Charts & reports update</div>
+ </div>
+ <div class="steps">
+  <div class="step"><div class="num">1</div><div><b>User opens the webpage.</b><br>The browser loads the HTML, CSS and JavaScript contained in the file.</div></div>
+  <div class="step"><div class="num">2</div><div><b>Existing data is loaded.</b><br>JavaScript checks localStorage. If saved data exists, it is loaded; otherwise default sample data is used.</div></div>
+  <div class="step"><div class="num">3</div><div><b>User adds a transaction.</b><br>The form collects description, amount, date, type, category, payment method and optional note.</div></div>
+  <div class="step"><div class="num">4</div><div><b>JavaScript creates a transaction object.</b><br>The values are converted into a structured record and added to the transactions array.</div></div>
+  <div class="step"><div class="num">5</div><div><b>Data is saved.</b><br>The array is converted into JSON using JSON.stringify() and stored in localStorage.</div></div>
+  <div class="step"><div class="num">6</div><div><b>Dashboard is refreshed.</b><br>JavaScript calculates income, expenses, balance, savings rate and budget usage.</div></div>
+  <div class="step"><div class="num">7</div><div><b>Charts are redrawn.</b><br>The category chart and spending overview use the updated transaction data.</div></div>
+ </div>
+</div>
+</section>
+
+<section id="storage">
+<div class="card">
+ <h2>6. How Data Storage Works</h2>
+ <p>The current application uses the browser's <b>localStorage</b>. This is a built-in web storage mechanism that stores small amounts of data as key-value pairs.</p>
+ <h3>Example transaction object</h3>
+ <div class="code">{
+  id: 123456789,
+  date: "2026-09-09",
+  desc: "College canteen",
+  amount: 180,
+  type: "expense",
+  category: "Food",
+  method: "UPI",
+  note: "Lunch"
+}</div>
+ <h3>Saving data</h3>
+ <div class="code">localStorage.setItem(
+  "studentExpenseTracker_v1",
+  JSON.stringify(data)
+);</div>
+ <h3>Reading data</h3>
+ <div class="code">const data = JSON.parse(
+  localStorage.getItem("studentExpenseTracker_v1")
+);</div>
+ <div class="callout warn"><b>Viva point:</b> localStorage is not the same as a cloud database. The data is stored in the browser on that device. Clearing browser site data can remove it.</div>
+</div>
+</section>
+
+<section id="calculations">
+<div class="card">
+ <h2>7. Important Calculations</h2>
+ <table>
+  <tr><th>Calculation</th><th>Formula</th><th>Purpose</th></tr>
+  <tr><td>Balance</td><td>Total Income − Total Expenses</td><td>Shows the remaining money.</td></tr>
+  <tr><td>Monthly Expense</td><td>Sum of current month's expense transactions</td><td>Shows current-month spending.</td></tr>
+  <tr><td>Budget Remaining</td><td>Monthly Budget − Monthly Expenses</td><td>Shows how much can still be spent.</td></tr>
+  <tr><td>Budget Used %</td><td>(Expenses ÷ Budget) × 100</td><td>Shows progress toward the spending limit.</td></tr>
+  <tr><td>Savings</td><td>Monthly Income − Monthly Expenses</td><td>Shows money left after spending.</td></tr>
+  <tr><td>Savings Rate</td><td>(Savings ÷ Income) × 100</td><td>Measures how much of income remains.</td></tr>
+ </table>
+ <h3>Example</h3>
+ <div class="callout">
+ If monthly income = <b>₹15,000</b>, expenses = <b>₹8,000</b>, and budget = <b>₹10,000</b>:<br>
+ Balance from these monthly values = ₹15,000 − ₹8,000 = <b>₹7,000</b><br>
+ Budget remaining = ₹10,000 − ₹8,000 = <b>₹2,000</b><br>
+ Budget used = (₹8,000 ÷ ₹10,000) × 100 = <b>80%</b><br>
+ Savings rate = (₹7,000 ÷ ₹15,000) × 100 ≈ <b>46.7%</b>
+ </div>
+</div>
+</section>
+
+<section id="charts">
+<div class="card">
+ <h2>8. How the Charts Work</h2>
+ <h3>Spending Overview</h3>
+ <p>The spending overview checks each day of the current month, adds expense amounts for that date and plots the values on a line chart. This helps identify days when spending was unusually high.</p>
+ <h3>Category Breakdown</h3>
+ <p>The category chart groups expenses into categories such as Food, Transport, Education and Entertainment. Each category's total is calculated and its share is represented visually.</p>
+ <div class="diagram">
+  <div class="box">Transactions</div><div class="arrow">→</div>
+  <div class="box">Group by category</div><div class="arrow">→</div>
+  <div class="box">Add category totals</div><div class="arrow">→</div>
+  <div class="box">Draw chart</div>
+ </div>
+ <div class="callout good"><b>Why charts?</b> Numbers tell the user how much they spent; charts make it easier to understand where and when they spent it.</div>
+</div>
+</section>
+
+<section id="workflow">
+<div class="card">
+ <h2>9. Complete System Workflow</h2>
+ <ol>
+  <li>Page loads in the browser.</li>
+  <li>JavaScript initializes the application.</li>
+  <li>Saved transaction data is retrieved from localStorage.</li>
+  <li>The dashboard calculates the current financial status.</li>
+  <li>User opens the Add Transaction form.</li>
+  <li>User enters transaction details.</li>
+  <li>JavaScript reads the form values.</li>
+  <li>A new transaction object is created.</li>
+  <li>The object is added to the transaction array.</li>
+  <li>The updated array is converted to JSON.</li>
+  <li>JSON data is saved in localStorage.</li>
+  <li>The dashboard, transaction table, budget information and charts are refreshed.</li>
+  <li>If the budget crosses 80%, a warning is displayed.</li>
+  <li>If the budget is exceeded, an exceeded-budget alert is displayed.</li>
+  <li>The user can search, filter, delete or export transactions.</li>
+ </ol>
+</div>
+</section>
+
+<section id="advantages">
+<div class="card">
+ <h2>10. Advantages</h2>
+ <div class="grid">
+  <div class="feature"><h3>Easy to use</h3><p>The dashboard provides important information without complicated navigation.</p></div>
+  <div class="feature"><h3>Student focused</h3><p>Categories and budget tracking are suitable for everyday student spending.</p></div>
+  <div class="feature"><h3>Fast</h3><p>Calculations happen instantly in the browser.</p></div>
+  <div class="feature"><h3>Private</h3><p>The current version does not send transaction data to a remote server.</p></div>
+  <div class="feature"><h3>Low cost</h3><p>A single HTML file can run without hosting or a backend.</p></div>
+  <div class="feature"><h3>Visual</h3><p>Charts and cards make financial information easier to understand.</p></div>
+ </div>
+</div>
+</section>
+
+<section id="limitations">
+<div class="card">
+ <h2>11. Limitations</h2>
+ <ul>
+  <li>Data is stored only in the browser and is not synchronized between devices.</li>
+  <li>There is currently no user login or account system.</li>
+  <li>There is no cloud backup.</li>
+  <li>Multiple users cannot share the same financial database.</li>
+  <li>The current application does not automatically connect to bank or UPI accounts.</li>
+  <li>Budget and transaction information must be entered manually.</li>
+ </ul>
+ <div class="callout warn"><b>These limitations are intentional for the current frontend version.</b> They can be solved by adding a backend and database in a future version.</div>
+</div>
+</section>
+
+<section id="future">
+<div class="card">
+ <h2>12. Future Scope</h2>
+ <p>The project can be upgraded from a browser-only application into a full-stack financial management system.</p>
+ <div class="grid">
+  <div class="feature">🔐 <b>User Authentication</b><p>Login and registration using email/password or OAuth.</p></div>
+  <div class="feature">☁️ <b>Cloud Database</b><p>Store transactions securely using Supabase, Firebase or another backend.</p></div>
+  <div class="feature">📱 <b>Mobile App</b><p>Convert the system into Android/iOS or a Progressive Web App.</p></div>
+  <div class="feature">🔔 <b>Notifications</b><p>Warn students when they approach or exceed their budget.</p></div>
+  <div class="feature">🤖 <b>AI Insights</b><p>Analyze spending patterns and suggest ways to save money.</p></div>
+  <div class="feature">📊 <b>Advanced Reports</b><p>Weekly, monthly and yearly comparisons with downloadable reports.</p></div>
+ </div>
+</div>
+</section>
+
+<section id="viva">
+<div class="card">
+ <h2>13. Viva / Presentation Questions</h2>
+ <div class="faq">
+  <details><summary>Why did you make this project?</summary><p>To provide students with a simple digital tool for recording expenses, managing budgets and understanding spending habits.</p></details>
+  <details><summary>Which technologies did you use?</summary><p>HTML5 for structure, CSS3 for styling and responsive design, and JavaScript for application logic, calculations, storage, filtering and charts.</p></details>
+  <details><summary>Why did you use JavaScript?</summary><p>Because the application needs dynamic behavior such as adding transactions, calculating totals, updating the dashboard, filtering records and drawing charts.</p></details>
+  <details><summary>Where is the data stored?</summary><p>In the current version, transaction data is stored in the browser's localStorage.</p></details>
+  <details><summary>What is localStorage?</summary><p>It is a browser storage API that allows websites to save key-value data locally so it can remain available after a page refresh.</p></details>
+  <details><summary>Is localStorage a database?</summary><p>It is a client-side storage mechanism, not a full database system. It is useful for this simple single-user frontend application but is not suitable for a large multi-user system.</p></details>
+  <details><summary>What happens when a transaction is added?</summary><p>The form values are collected, converted into a transaction object, added to the transaction array, saved as JSON in localStorage and then used to recalculate and redraw the interface.</p></details>
+  <details><summary>How does the budget warning work?</summary><p>The application compares current-month expenses with the monthly budget. At 80% or more it displays a warning, and after the budget is exceeded it displays an exceeded-budget alert.</p></details>
+  <details><summary>How are expenses categorized?</summary><p>Each transaction receives a category such as Food, Transport, Education, Entertainment, Shopping, Bills, Health or Other.</p></details>
+  <details><summary>Can this project use a real database?</summary><p>Yes. A backend can be added and the localStorage layer can be replaced or supplemented with a database such as Supabase, Firebase or MySQL through an API/backend.</p></details>
+  <details><summary>What is the difference between frontend and backend in this project?</summary><p>The current project is primarily frontend. The browser displays the interface and executes JavaScript. A future backend would handle authentication, APIs, database storage, security and multi-device synchronization.</p></details>
+  <details><summary>What is the main benefit of this project?</summary><p>It gives students a simple visual way to understand and control their personal spending instead of relying on memory or manual calculations.</p></details>
+ </div>
+</div>
+</section>
+
+<section>
+<div class="card">
+ <h2>14. Short Presentation Explanation</h2>
+ <p>If your teacher asks you to explain the project quickly, you can say:</p>
+ <div class="callout">
+ <b>“My project is a Student Expense Tracker developed using HTML, CSS and JavaScript. Its purpose is to help students manage their daily expenses and monthly budget. The user can add income and expenses with details such as category, date and payment method. JavaScript processes these transactions and calculates the balance, monthly spending, budget usage and savings rate. I used localStorage to save the data directly in the browser, so the information remains after refreshing the page. The project also provides category-based charts, spending trends, search and filtering, CSV export and budget alerts. In the future, it can be connected to a backend and cloud database to support user accounts, synchronization and advanced analytics.”</b>
+ </div>
+</div>
+</section>
+
+<div class="footer">Student Expense Tracker — Project Documentation • HTML / CSS / JavaScript</div>
+</main>
+</body>
+</html>
